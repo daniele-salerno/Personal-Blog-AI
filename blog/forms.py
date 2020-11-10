@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import BooleanField, PasswordField, TextAreaField, StringField, SubmitField
 from wtforms.validators import DataRequired, Length
 
@@ -18,6 +19,7 @@ class PostForm(FlaskForm):
                                 validators=[Length(max=240, message="description no more than 240 chars")]
                         )
     body = TextAreaField('Content', validators=[DataRequired('Mandatory Field!')])
+    image = FileField('Cover Post', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
     submit = SubmitField('Publish Post')
 
 
