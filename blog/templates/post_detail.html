@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="container content-container">
+
+    <div class="row no-gutters">
+
+        <div class="col-md-9 order-md-2">
+            <div class="post-page-block">
+                <h3>{{ post.title }}</h3>
+                <p class="p-small-two text-muted">
+                    Post created at: {{ post.insert_time.strftime('%d.%m.%Y') }}
+                </p>
+                {% if current_user.is_authenticated and current_user == post.author %}
+                <a class="btn btn-sm btn-outline-success mr-1" href="{{ url_for('post_update', post_id=post.id) }}">
+                    Update
+                </a>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-sm btn-outline-danger mr-5" data-toggle="modal" data-target="#deletePostModal">
+                    Delete
+                </button>
+                {% endif %}
+                <p class="p-small-one text-muted mb-0">
+                    {{ post.body|markdown }}
+                </p>
+                
+            
+            </div>    
+        </div>
+
+        <div class="col-md-3 order-md-1">
+            {% include 'about_me_snippet.html' %}              
+        </div>
+    </div>
+</div>
+
+{% include 'post_delete_modal.html' %}
+
+{% endblock %}

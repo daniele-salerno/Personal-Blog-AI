@@ -1,0 +1,43 @@
+modificare variabile di ambiente
+set FLASK_APP=application.py // su cmd
+$flask_env:FLASK_APP="application.py" // su ps
+
+
+flask_env\Scripts\activate
+flask run
+flask run --host=192.168.1.8
+
+// setta lo script di running
+set FLASK_APP=run.py
+// variabile d'ambiente che attiva il debugger e altro
+set FLASK_ENV=development 
+
+pip freeze > requirements.txt
+
+// init del db
+flask db init
+
+// crea migrazioni
+flask db migrate -m "Messaggio"
+
+// applica le migrazioni
+flask db upgrade
+
+// annulla le migrazioni
+flask db downgrade
+
+// esempio tramite orm sqlalchemy di inserimento
+from blog import db
+from blog.models import Post, User
+u = User(username="Dani", email="sale92-@hotmail.it", password="modificami")
+db.session.add(u)
+db.session.commit() // aggiunta/modifica/cancellazione
+p = Post(title="primo post", body="some random content", author=u)
+// cancellazione
+db.session.delete(istanza)
+db.session.commit()
+// creare un queryset
+Post.query.all() //first() last()
+User.query.get(1) 
+Post.query.filter(User.username=="Dani").all()
+User.query.filter_by(username="Dani").all()
