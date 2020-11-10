@@ -3,6 +3,7 @@ from flask import render_template, flash, redirect, url_for, abort, request
 from blog.models import Post, User
 from blog.forms import LoginForm, PostForm
 from flask_login import current_user, login_user, logout_user, login_required
+from blog.utils import title_slugifier
 
 ## Views ##
 
@@ -19,9 +20,10 @@ def contacts():
 def about():
     return render_template("about_page.html")
 
-@app.route("/post/<int:post_id>")
-def post_detail(post_id):
-    post = Post.query.get_or_404(post_id)
+@app.route("/post/<string:post_slug>")
+def post_detail(post_slug):
+    # post = Post.query.get_or_404(post_id)
+    post = Post.query.filter_by(slug=post_slug).first_or_404()
     return render_template("post_detail.html", post=post)
 
 @app.route("/logout")
@@ -53,11 +55,12 @@ def login():
 def post_create():
     form = PostForm()
     if form.validate_on_submit():
-        new_post = Post(title=form.title.data, body=form.body.data,
+        slug = title_slugifier(form.title.data)
+        new_post = Post(title=form.title.data, body=form.body.data, slug=slug,
                         description=form.description.data, author=current_user)
         db.session.add(new_post)
         db.session.commit()
-        return redirect(url_for('post_detail', post_id=new_post.id))
+        return redirect(url_for('post_detail', post_slug=slug))
     return render_template('post_editor.html', form=form)
 
 @app.route("/post/<int:post_id>/update", methods=["GET", "POST"])
@@ -72,7 +75,7 @@ def post_update(post_id):
         post_instance.description = form.description.data
         post_instance.body = form.body.data
         db.session.commit()
-        return redirect(url_for('post_detail', post_id=post_instance.id))
+        return redirect(url_for('post_detail', post_slug=post_instance.slug))
     elif request.method == "GET":
         form.title.data = post_instance.title
         form.description.data = post_instance.description
