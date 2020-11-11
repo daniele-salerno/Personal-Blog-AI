@@ -1,3 +1,6 @@
+// PSW: 123stella!
+// user: Dani
+
 flask_env\Scripts\activate
 flask run
 flask run --host=192.168.1.8
