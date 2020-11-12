@@ -7,19 +7,21 @@
     <div class="row no-gutters">
         <div class="col-md-9 order-md-2">
             
+            {% if post.image %}
+            <div class="post-image-block">
+                <img class="img-fluid post-image" src="{{ url_for('static', filename='img/posts/' + post.image) }}" alt="">
+            </div>
+            
+            <div class="post-page-block no-border-top">
+            {% else %}
             <div class="post-page-block">
-                
-                {% if post.image %}
-                <div>
-                    <img class="img-fluid" src="{{ url_for('static', filename='img/posts/' + post.image) }}" alt="">
-                </div>
-                {% endif %}
-
+            {% endif %}
                 <h3>{{ post.title }}</h3>
                 <p class="p-small-two text-muted">
                     Post created at: {{ post.insert_time.strftime('%d.%m.%Y') }}
                 </p>
                 {% if current_user.is_authenticated and current_user == post.author %}
+                <div class="mb-3">
                 <a class="btn btn-sm btn-outline-success mr-1" href="{{ url_for('post_update', post_id=post.id) }}">
                     Update
                 </a>
@@ -27,10 +29,13 @@
                 <button type="button" class="btn btn-sm btn-outline-danger mr-5" data-toggle="modal" data-target="#deletePostModal">
                     Delete
                 </button>
+                </div>
                 {% endif %}
                 <p class="p-small-one text-muted mb-0">
                     {{ post.body|markdown }}
                 </p>
+                <hr>
+                <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('homepage') }}">↩ All Posts</a>
                 
             </div>    
         </div>
