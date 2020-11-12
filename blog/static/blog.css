@@ -138,3 +138,12 @@ html, body {
 .read-more:hover {
     color: #343a40 !important;
 }
+
+.custom-link {
+    color: #000;
+}
+
+.custom-link:hover {
+    color: #343a40;
+    text-decoration: none;
+}

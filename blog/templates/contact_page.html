@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Me{% endblock %}
+
+{% block content %}
+<div class="container content-container">
+
+    <div class="row no-gutters">
+
+        <div class="col-md-9 order-md-2">
+            <div class="about-page-block">
+                <p class="lead">Contact Me.</p>
+                <p>You can contact me at my email address or through my social channels:</p>
+                <hr>
+                <p><i class="fas fa-envelope"></i> Email: <a class="custom-link" href="mailto:salerno.daniele92@gmail.com">salerno.daniele92@gmail.com</a></p>   
+                <p><i class="fab fa-facebook-f"></i> <a class="custom-link" href="">Facebook</a></p> 
+                <p><i class="fab fa-github"></i> <a class="custom-link" href="https://github.com/daniele-salerno">GitHub</a></p> 
+                <p><i class="fab fa-medium"></i> <a class="custom-link" href="https://medium.com/@salerno.daniele92">Medium</a></p> 
+                <hr>
+                <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('about') }}">About Me</a>
+            </div>    
+        </div>
+
+        <div class="col-md-3 order-md-1">
+            {% include 'about_me_snippet.html' %}              
+        </div>
+
+    </div>
+    
+</div>
+{% endblock %}

@@ -25,9 +25,9 @@ def homepage():
     return render_template("homepage.html", posts=posts, current_page=page_number,
                             next_page=next_page, previous_page=previous_page)
 
-@app.route("/contacts")
-def contacts():
-    return "Contattaci!"
+@app.route("/contact")
+def contact():
+    return render_template("contact_page.html")
 
 @app.route("/about")
 def about():
