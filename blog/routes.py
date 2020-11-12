@@ -9,8 +9,21 @@ from blog.utils import title_slugifier, save_picture
 
 @app.route("/")
 def homepage(): 
-    posts = Post.query.order_by(Post.insert_time.desc()).all()
-    return render_template("homepage.html", posts=posts)
+    page_number = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.insert_time.desc()).paginate(page_number, 3, True)
+    
+    if posts.has_next:
+        next_page = url_for("homepage", page=posts.next_num)
+    else:
+        next_page = None
+    
+    if posts.has_prev:
+        previous_page = url_for("homepage", page=posts.prev_num)
+    else:
+        previous_page = None
+
+    return render_template("homepage.html", posts=posts, current_page=page_number,
+                            next_page=next_page, previous_page=previous_page)
 
 @app.route("/contacts")
 def contacts():
