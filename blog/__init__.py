@@ -23,4 +23,4 @@ with app.app_context():
     
 
 # da mettere in fondo per evitare gli import circolari
-from blog import models, routes
+from blog import errors, models, routes
