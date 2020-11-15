@@ -10,7 +10,7 @@ from blog.utils import title_slugifier, save_picture
 @app.route("/")
 def homepage(): 
     page_number = request.args.get('page', 1, type=int)
-    posts = Post.query.order_by(Post.insert_time.desc()).paginate(page_number, 3, True)
+    posts = Post.query.order_by(Post.insert_time.desc()).paginate(page_number, 5, True)
     
     if posts.has_next:
         next_page = url_for("homepage", page=posts.next_num)

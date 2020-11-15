@@ -10,15 +10,20 @@
         <div class="col-md-9 order-md-2">
             <div class="about-page-block">
                 <p class="lead">Contact Me.</p>
-                <p>You can contact me at my email address or through my social channels:</p>
+    
+                    <input type="checkbox" name="menu" id="menu" class="menu-toggler">
+                    <p>You can contact me at my email address or through my <label id="lbl_socials" for="menu" class="menu-toggler-label">social channels</label></p>
+                    <hr>
+                    <ul class="stagger-menu">
+                      <li style="--i: 0"><p><i class="fas fa-envelope"></i> <a class="custom-link" href="mailto:salerno.daniele92@gmail.com">Email</a></p></li>
+                      <li style="--i: 1"><p><i class="fab fa-facebook-f"></i> <a class="custom-link" href="">Facebook</a></p></li>
+                      <li style="--i: 2"><p><i class="fab fa-linkedin"></i> <a class="custom-link" href="https://www.linkedin.com/in/daniele-salerno-1314ab129/">Linkedin</a></p></li>
+                      <li style="--i: 3"><p><i class="fab fa-github"></i> <a class="custom-link" href="https://github.com/daniele-salerno">GitHub</a></p></li>
+                      <li style="--i: 4"><p><i class="fab fa-medium"></i> <a class="custom-link" href="https://medium.com/@salerno.daniele92">Medium</a></p></li>
+                    </ul>
                 <hr>
-                <p><i class="fas fa-envelope"></i> Email: <a class="custom-link" href="mailto:salerno.daniele92@gmail.com">salerno.daniele92@gmail.com</a></p>   
-                <p><i class="fab fa-facebook-f"></i> <a class="custom-link" href="">Facebook</a></p> 
-                <p><i class="fab fa-linkedin"></i> <a class="custom-link" href="https://www.linkedin.com/in/daniele-salerno-1314ab129/">Linkedin</a></p> 
-                <p><i class="fab fa-github"></i> <a class="custom-link" href="https://github.com/daniele-salerno">GitHub</a></p> 
-                <p><i class="fab fa-medium"></i> <a class="custom-link" href="https://medium.com/@salerno.daniele92">Medium</a></p> 
-                <hr>
-                <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('about') }}">About Me</a>
+                <a class="btn btn-sm btn-outline-secondary mouse-cursor-gradient-tracking" href="{{ url_for('about') }}">About Me</a>
+                
             </div>    
         </div>
 
@@ -29,4 +34,21 @@
     </div>
     
 </div>
+
+<script>
+    // fancy lighting effects
+    let btn = document.querySelector('.mouse-cursor-gradient-tracking');
+    btn.onmousemove = function(e) {
+        let rect = e.target.getBoundingClientRect();
+        let x = e.clientX - rect.left;
+        let y = e.clientY - rect.top;
+        btn.style.setProperty('--x', x + 'px');
+        btn.style.setProperty('--y', y + 'px');
+    }
+
+    // force click on list socials
+    let label = document.getElementById('lbl_socials');
+    label.click();
+
+</script>
 {% endblock %}
