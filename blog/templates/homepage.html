@@ -6,24 +6,34 @@
 <div class="container content-container">
 
     <div class="row no-gutters">
-
         <div class="col-md-9 order-md-2">
             {% for post in posts.items %}
-            <div class="single-post-home">                           
-                <h5>
-                    <a href="{{ url_for('post_detail', post_slug=post.slug) }}">
-                        <p class="hover-underline-animation">{{ post.title }}</p>
-                    </a>
-                </h5>
-                <p class="p-small-two text-muted">
-                    Post created at: {{ post.insert_time.strftime('%d.%m.%Y') }}
-                </p>
-                {% if post.description %}
-                <p class="p-small-one text-muted mb-0">
-                    {{ post.description }}
-                    <a class="read-more" href="{{ url_for('post_detail', post_slug=post.slug) }}">read post.</a>
-                </p>
-                {% endif %}
+            <div class="single-post-home">   
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 no-padding-left-right">
+                            <h5>
+                                <a href="{{ url_for('post_detail', post_slug=post.slug) }}">
+                                    <p class="hover-underline-animation">{{ post.title }}</p>
+                                </a>
+                            </h5>
+                            <p class="p-small-two text-muted">
+                                Post created at: {{ post.insert_time.strftime('%d.%m.%Y') }}
+                            </p>
+                            {% if post.description %}
+                            <p class="p-small-one text-muted mb-0">
+                                {{ post.description }}
+                                <a class="read-more" href="{{ url_for('post_detail', post_slug=post.slug) }}">read post.</a>
+                            </p>
+                            {% endif %}
+                        </div>
+                        <div class="col-sm-4 no-padding-left-right auto-margin">
+                            <div class="post-image-block">
+                                <img class="img-fluid post-image-home" src="{{ url_for('static', filename='img/posts/' + post.image) }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             {% endfor %}
             
@@ -39,15 +49,12 @@
                 {% if next_page %}
                 <a class="btn btn-sm btn-outline-secondary" href="{{ next_page }}">↪ Forward</a>
                 {% endif %}
-
             </div>
         </div>
 
         <div class="col-md-3 order-md-1">
             {% include 'about_me_snippet.html' %}           
         </div>
-
-    </div>
-    
+    </div>  
 </div>
 {% endblock %}

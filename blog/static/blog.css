@@ -69,6 +69,22 @@ a:hover {
     border-top-right-radius: 5px;
 }
 
+.post-image-home {
+    border: 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.no-padding-left-right {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.auto-margin {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .single-post-home {
     background-color: #fff;
     border: 1px solid #d3d3d3;
