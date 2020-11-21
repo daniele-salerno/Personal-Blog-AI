@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %} - Personal Blog</title>
+	<title>{% block title %}{% endblock %} - Personal Blog</title>
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon-32x32.png') }}" sizes="32x32" />
     <!-- Bootstrap CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}">
@@ -76,7 +77,7 @@
 			  </li>
 			  
 			  <li class="list-inline-item">
-				<a href="https://www.facebook.com/account92">
+				<a href="https://www.facebook.com/account92" target="_blank">
 				  <span class="fa-stack fa-lg">
 					<i class="fas fa-circle fa-stack-2x"></i>
 					<i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
@@ -85,7 +86,7 @@
 			  </li>
 			  
 			  <li class="list-inline-item">
-				<a href="https://www.linkedin.com/in/daniele-salerno-1314ab129/">
+				<a href="https://www.linkedin.com/in/daniele-salerno-1314ab129/" target="_blank">
 				  <span class="fa-stack fa-lg">
 					<i class="fas fa-circle fa-stack-2x"></i>
 					<i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -93,7 +94,7 @@
 				</a>
 			  </li>
 			  <li class="list-inline-item">
-				<a href="https://github.com/daniele-salerno">
+				<a href="https://github.com/daniele-salerno" target="_blank">
 				  <span class="fa-stack fa-lg">
 					<i class="fas fa-circle fa-stack-2x"></i>
 					<i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -101,7 +102,7 @@
 				</a>
 			  </li>
 			  <li class="list-inline-item">
-				<a href="https://daniele-salerno.medium.com/">
+				<a href="https://daniele-salerno.medium.com/" target="_blank">
 				  <span class="fa-stack fa-lg">
 					<i class="fas fa-circle fa-stack-2x"></i>
 					<i class="fab fa-medium fa-stack-1x fa-inverse"></i>
@@ -114,7 +115,6 @@
 		</div>
 	  </div>
 	</footer>
-    
     
 </body>
 </html>
