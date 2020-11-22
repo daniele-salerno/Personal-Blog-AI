@@ -1,7 +1,12 @@
 import os
+from dotenv import load_dotenv
 
 # locazione del progetto
 basedir = os.path.abspath(os.path.dirname(__file__))
+
+# production
+# load_dotenv(os.path.join(basedir, '.env'))
+# load_dotenv(os.path.join(basedir, '.flaskenv'))
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
