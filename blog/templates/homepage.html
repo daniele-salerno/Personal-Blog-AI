@@ -40,14 +40,14 @@
             <div class="pagination-block">
                 {% if previous_page %}
                 {% if current_page == 2 %}
-                <a class="btn btn-sm btn-outline-secondary mouse-cursor-gradient-tracking" href="/"><i class="fas fa-backward"></i> Back</a>
+                <a id="btn_next" class="btn btn-sm btn-outline-secondary mouse-cursor-gradient-tracking" href="/"><i class="fas fa-backward"></i> Back</a>
                 {% else %}
-                <a class="btn btn-sm btn-outline-secondary mouse-cursor-gradient-tracking" href="{{ previous_page }}"><i class="fas fa-backward"></i> Back</a>
+                <a id="btn_next" class="btn btn-sm btn-outline-secondary mouse-cursor-gradient-tracking" href="{{ previous_page }}"><i class="fas fa-backward"></i> Back</a>
                 {% endif %}
                 {% endif %}
 
                 {% if next_page %}
-                <a class="btn btn-sm btn-outline-secondary mouse-cursor-gradient-tracking" href="{{ next_page }}"><i class="fas fa-forward"></i> Forward</a>
+                <a id="btn_forward" class="btn btn-sm btn-outline-secondary mouse-cursor-gradient-tracking" href="{{ next_page }}"><i class="fas fa-forward"></i> Forward</a>
                 {% endif %}
             </div>
         </div>
@@ -57,4 +57,17 @@
         </div>
     </div>  
 </div>
+
+<script>
+    // fancy lighting effects
+    let btn_forward = document.querySelector('#btn_forward');
+    btn_forward.onmousemove = function(e) {
+        let rect = e.target.getBoundingClientRect();
+        let x = e.clientX - rect.left;
+        let y = e.clientY - rect.top;
+        btn_forward.style.setProperty('--x', x + 'px');
+        btn_forward.style.setProperty('--y', y + 'px');
+	}
+</script>
+
 {% endblock %}
