@@ -39,11 +39,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/contact' %}active{% endif %}" href="{{ url_for('contact') }}">Contacts</a>
-                </li>
+				</li>
+				{% if current_user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/create-post' %}active{% endif %}" href="{{ url_for('post_create') }}">New Post</a>
                 </li>
-                {% if current_user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                 </li>

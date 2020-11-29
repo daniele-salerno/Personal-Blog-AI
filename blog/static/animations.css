@@ -114,7 +114,7 @@
 /* Mouse cursor gradient tracking */
 .mouse-cursor-gradient-tracking {
     position: relative;
-    background: black;
+    background: #212529;
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
     border: none;
