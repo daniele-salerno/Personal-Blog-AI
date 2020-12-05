@@ -8,6 +8,3 @@ TODO list:
 - Mini Bot
 
 - Echarts categories
-
-
-
